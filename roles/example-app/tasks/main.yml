@@ -1,0 +1,26 @@
+---
+- name: Create example-app network
+  docker_network:
+    name: example-app
+
+- name: Ensure /opt/example-app exists
+  file: 
+    path: /opt/example-app
+    state: directory
+
+- name: Template docker-compose
+  template:
+    src: docker-compose.yml
+    dest: /opt/example-app/docker-compose.yml
+
+- name: Tear down existing services
+  docker_compose:
+    project_src: /opt/example-app
+    state: absent
+    remove_orphans: yes
+
+- name: Create and start services
+  docker_compose:
+    pull: yes
+    project_src: /opt/example-app
+
