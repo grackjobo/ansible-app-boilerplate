@@ -9,10 +9,10 @@ services:
       - example
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.chatbot-frontend.rule=Host(`example.jurrevriesen.nl`)"
-      - "traefik.http.routers.chatbot-frontend.entrypoints=websecure"
-      - "traefik.http.routers.chatbot-frontend.priority=1"
-      - "traefik.http.routers.chatbot-frontend.tls.certresolver=myresolver"
+      - "traefik.http.routers.example-app.rule=Host(`example.jurrevriesen.nl`)"
+      - "traefik.http.routers.example-app.entrypoints=websecure"
+      - "traefik.http.routers.example-app.priority=1"
+      - "traefik.http.routers.example-app.tls.certresolver=myresolver"
       - traefik.docker.network=traefik
 
 networks:
